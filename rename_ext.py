@@ -6,6 +6,9 @@ target_ext = input("What file extension do you want to replace? ")
 replace_ext = input("What do you want to replace it with? ")
 
 if target_ext == "":
+    if "." not in replace_ext:
+        print("Aborted as no file extension was set to be added onto the extensionless files.")
+        os._exit(1)
     for files in os.listdir(folder):
         if "." not in files:
             os.rename(folder + files, folder + files + replace_ext)
